@@ -1,14 +1,13 @@
-import { scryptSync, createCipheriv } from 'crypto';
+import { createCipheriv } from 'crypto';
 import { json, send } from 'micro';
 
 export default async (req, res) => {
-  const { ALGORITHM, KEY, IV } = process.env;
   try {
     const { payload } = await json(req);
-    const password = scryptSync(KEY, 'salt', 24);
-    const cipher = createCipheriv(ALGORITHM, password, IV);
-    cipher.update(payload, 'utf8', 'base64');
-    send(res, 200, cipher.final('base64'));
+    const { ALGORITHM, KEY, IV } = process.env;
+    const cipher = createCipheriv(ALGORITHM, KEY, IV);
+    let encrypted = cipher.update(payload, 'utf8', 'base64') + cipher.final('base64');
+    send(res, 200, encrypted);
   } catch (error) {
     send(res, 500, error.message);
   }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "encrypt",
+  "name": "crypto",
   "env": {
     "ALGORITHM": "@encrypt_algorithm",
     "KEY": "@encrypt_key",
