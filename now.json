@@ -5,5 +5,14 @@
     "ALGORITHM": "@encrypt_algorithm",
     "KEY": "@encrypt_key",
     "IV": "@encrypt_iv"
+  },
+  "builds": [{
+    "src": "api/encrypt.js",
+    "use": "@now/node"
+  }],
+  "routes": {
+    "src": "/encrypt",
+    "dest": "api/encrypt.js",
+    "methods": ["POST"]
   }
 }
