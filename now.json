@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "name": "encrypt",
+  "env": {
+    "ALGORITHM": "@encrypt_algorithm",
+    "KEY": "@encrypt_key",
+    "IV": "@encrypt_iv"
+  }
+}
